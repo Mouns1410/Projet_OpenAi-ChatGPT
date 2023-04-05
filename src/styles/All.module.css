@@ -1,0 +1,51 @@
+/* ------------------------- ANIMATION 2 ------------------------- */
+/* DEMO-SPECIFIC STYLES */
+.typewriter {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    padding: 3em 0em;
+    width: 100%;
+    gap: 32px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.typewriter img {
+    border-radius: 10px;
+}
+
+.typewriter p {
+    overflow: hidden;
+    border-right: .15em solid black;
+    white-space: nowrap;    /* Keeps the content on a single line */
+
+    /* margin: 0 auto; */   /* Gives that scrolling effect as the typing happens */
+
+    animation:
+        typing 4.5s steps(30, end),
+        blink-caret 1s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: white
+    }
+}

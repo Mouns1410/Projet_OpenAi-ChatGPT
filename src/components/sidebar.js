@@ -2,16 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import Sidechat from './sidechat'
 import { useSelector, useDispatch } from "react-redux"
-import { clear } from "./../../store/features/chatSlice"
-
+import { clear } from "../../store/features/boxSlice"
 
 export default function Sidebar() {
-    const allChat = useSelector((state) => state.chat.value)
+    const allChat = useSelector((state) => state.box.value)
     const dispatch = useDispatch();
 
-
+    console.log(allChat)
   return (
-    <div className='h-full w-[18%] bg-[#202123] flex flex-col justify-center items-center'>
+    <div className='h-full w-[20%] bg-[#202123] flex flex-col justify-center items-center'>
                 <div className='w-full h-[75%] px-3 py-3 text-white font-light flex flex-col gap-2'>
                     <Link href="/home">
                         <Sidechat signe="+" message="New Chat" />
@@ -19,7 +18,9 @@ export default function Sidebar() {
                     {
                         allChat.map((element, index) => {
                             return (
-                                <Sidechat key={index} message={element.substring(0,18) + "..."} />
+                                <Link key={index} href={`/home/${element}`}>
+                                    <Sidechat message={element.messages[0].substring(0,18) + "..."} />
+                                </Link>
                             )
                         })
                     }

@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
-import chatSlice from './features/chatSlice'
+import boxSlice from './features/boxSlice'
+import currentMsgSlice from './features/currentMsgSlice'
 
 export const store = configureStore({
   reducer: {
-    chat : chatSlice
+    box : boxSlice,
+    currentMsg : currentMsgSlice
   },
 })

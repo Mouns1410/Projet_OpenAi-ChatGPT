@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Acceuil({setMsgClicked}) {
+export default function Acceuil({setInpValue}) {
   return (
     <div className='h-full w-full'>
         <div className='h-[20%]'></div>
@@ -13,15 +13,15 @@ export default function Acceuil({setMsgClicked}) {
                                 <span className='font-normal text-xl'>Examples</span>
                             </div>
                             <div className='h-[80%] w-full flex flex-col gap-3 mt-5'>
-                                <div    onClick={()=>{setMsgClicked("Explain quantum computing in simple terms")}}
+                                <div    onClick={(e)=>{e.preventDefault(); setInpValue("Explain quantum computing in simple terms")}}
                                         className='w-full bg-[#3e3f4b] rounded-md py-3 px-3 hover:bg-black cursor-pointer'>
                                     Explain quantum computing in simple terms
                                 </div>
-                                <div    onClick={()=>{setMsgClicked("Got any creative ideas for a 10 year old’s birthday ?")}}
+                                <div    onClick={(e)=>{e.preventDefault(); setInpValue("Got any creative ideas for a 10 year old’s birthday ?")}}
                                         className='w-full bg-[#3e3f4b] rounded-md py-3 px-3 hover:bg-black cursor-pointer'>
                                     Got any creative ideas for a 10 year old’s birthday ?
                                 </div>
-                                <div    onClick={()=>{setMsgClicked("How do I make an HTTP request in Javascript ?")}}
+                                <div    onClick={(e)=>{e.preventDefault(); setInpValue("How do I make an HTTP request in Javascript ?")}}
                                         className='w-full bg-[#3e3f4b] rounded-md py-3 px-3 hover:bg-black cursor-pointer'>
                                     How do I make an HTTP request in Javascript ?
                                 </div>

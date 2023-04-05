@@ -1,6 +1,19 @@
 import Link from 'next/link'
+import { useState } from 'react'
 
 export default function Conexion() {
+  const [validMail, setValidMail] = useState(false)
+
+  const validateMail = () => {
+    const emailInput = document.getElementById("emailInput");
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Expression régulière pour vérifier l'adresse email
+
+    if (regex.test(emailInput.value)) {
+      setValidMail(true)
+    } else {
+      setValidMail(false)
+    }
+  }
   return (
     <h1 className="h-screen w-screen">
       <div className="h-[15%] w-full flex justify-center items-center">
@@ -8,19 +21,26 @@ export default function Conexion() {
       </div>
       <div className="h-[75%] w-full flex justify-center items-center flex-col gap-7">
         <h1 className="font-semibold text-4xl">Welcome back</h1>
-        <form onSubmit={()=>{}} 
+        <form onSubmit={(e)=>{e.preventDefault();}} 
               className="flex flex-col justify-center items-center gap-7">
           <div>
               <label className="block mb-1 text-base font-light text-gray-500 ">Email address</label>
-              <input type="email" className="w-[300px] outline-none border border-gray-300 rounded px-5 py-3" placeholder="E-mail" required />
+              <input type="text" id='emailInput' className="w-[300px] outline-none border border-gray-300 rounded px-5 py-3" placeholder="E-mail" />
           </div>
           <div>
-            <Link href="/home">
-              <button   type="submit"
-                        className="bg-[#0ca37f] w-[300px] h-14 text-white py-2 px-4 rounded font-light">
-                Continue
-              </button>
-            </Link>
+            {
+              validMail  ? <Link href="/home">
+                                <button   type="submit"
+                                          className="bg-[#0ca37f] w-[300px] h-14 text-white py-2 px-4 rounded font-light">
+                                  Go To The Website
+                                </button>
+                              </Link>
+                            : <button onClick={()=>{validateMail();}}
+                                      type="submit"
+                                      className="bg-[#EF5350] w-[300px] h-14 text-white py-2 px-4 rounded font-light">
+                                  Check Mail
+                              </button>
+            }
           </div>
         </form>
         <div>
